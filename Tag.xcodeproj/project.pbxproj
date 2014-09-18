@@ -25,7 +25,7 @@
 		5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */; };
 		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
 		FB463F3119CB6204009898B9 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3019CB6204009898B9 /* tag.png */; };
-		FB9CCFF119CB4C410028A9F0 /* userArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9CCFF019CB4C410028A9F0 /* userArrow.png */; };
+		FB463F3519CB66A5009898B9 /* userArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3419CB66A5009898B9 /* userArrow.png */; };
 		FBA0687F19CAAE5200669D20 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0687E19CAAE5200669D20 /* arrow.png */; };
 		FBA0688119CABADD00669D20 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0688019CABADD00669D20 /* arrow_left.png */; };
 /* End PBXBuildFile section */
@@ -67,7 +67,7 @@
 		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
 		FB463F3019CB6204009898B9 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
-		FB9CCFF019CB4C410028A9F0 /* userArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userArrow.png; sourceTree = "<group>"; };
+		FB463F3419CB66A5009898B9 /* userArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userArrow.png; sourceTree = "<group>"; };
 		FBA0687E19CAAE5200669D20 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		FBA0688019CABADD00669D20 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,8 +149,8 @@
 		5AD6DA9819C77A06006E4BC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB463F3419CB66A5009898B9 /* userArrow.png */,
 				FB463F3019CB6204009898B9 /* tag.png */,
-				FB9CCFF019CB4C410028A9F0 /* userArrow.png */,
 				FBA0688019CABADD00669D20 /* arrow_left.png */,
 				FBA0687E19CAAE5200669D20 /* arrow.png */,
 				5AD6DA9919C77A06006E4BC7 /* Tag-Info.plist */,
@@ -256,10 +256,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA0688119CABADD00669D20 /* arrow_left.png in Resources */,
+				FB463F3519CB66A5009898B9 /* userArrow.png in Resources */,
 				5AD6DAAA19C77A06006E4BC7 /* Images.xcassets in Resources */,
 				5AD6DA9C19C77A06006E4BC7 /* InfoPlist.strings in Resources */,
 				5AD6DAA519C77A06006E4BC7 /* Main.storyboard in Resources */,
-				FB9CCFF119CB4C410028A9F0 /* userArrow.png in Resources */,
 				FBA0687F19CAAE5200669D20 /* arrow.png in Resources */,
 				FB463F3119CB6204009898B9 /* tag.png in Resources */,
 			);

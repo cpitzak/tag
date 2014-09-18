@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A098DC019C8C2DD00841805 /* TagDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */; };
+		5A1104F719C9DAF4005317B9 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1104F619C9DAF4005317B9 /* CameraViewController.m */; };
 		5AD6DA9219C77A06006E4BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9119C77A06006E4BC7 /* Foundation.framework */; };
 		5AD6DA9419C77A06006E4BC7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9319C77A06006E4BC7 /* CoreGraphics.framework */; };
 		5AD6DA9619C77A06006E4BC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9519C77A06006E4BC7 /* UIKit.framework */; };
@@ -22,6 +23,8 @@
 		5AD6DABB19C77A06006E4BC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */; };
 		5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DABC19C77A06006E4BC7 /* TagTests.m */; };
 		5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */; };
+		FBA0687F19CAAE5200669D20 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0687E19CAAE5200669D20 /* arrow.png */; };
+		FBA0688119CABADD00669D20 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0688019CABADD00669D20 /* arrow_left.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,8 @@
 /* Begin PBXFileReference section */
 		5A098DBE19C8C2DD00841805 /* TagDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagDetailViewController.h; sourceTree = "<group>"; };
 		5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagDetailViewController.m; sourceTree = "<group>"; };
+		5A1104F519C9DAF4005317B9 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		5A1104F619C9DAF4005317B9 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 		5AD6DA8E19C77A06006E4BC7 /* Tag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD6DA9119C77A06006E4BC7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5AD6DA9319C77A06006E4BC7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -56,6 +61,8 @@
 		5AD6DABC19C77A06006E4BC7 /* TagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagTests.m; sourceTree = "<group>"; };
 		5AD6DAC619C77BB0006E4BC7 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
 		5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
+		FBA0687E19CAAE5200669D20 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		FBA0688019CABADD00669D20 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +129,8 @@
 				5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */,
 				5A098DBE19C8C2DD00841805 /* TagDetailViewController.h */,
 				5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */,
+				5A1104F519C9DAF4005317B9 /* CameraViewController.h */,
+				5A1104F619C9DAF4005317B9 /* CameraViewController.m */,
 				5AD6DAA919C77A06006E4BC7 /* Images.xcassets */,
 				5AD6DA9819C77A06006E4BC7 /* Supporting Files */,
 			);
@@ -131,6 +140,8 @@
 		5AD6DA9819C77A06006E4BC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FBA0688019CABADD00669D20 /* arrow_left.png */,
+				FBA0687E19CAAE5200669D20 /* arrow.png */,
 				5AD6DA9919C77A06006E4BC7 /* Tag-Info.plist */,
 				5AD6DA9A19C77A06006E4BC7 /* InfoPlist.strings */,
 				5AD6DA9D19C77A06006E4BC7 /* main.m */,
@@ -233,9 +244,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBA0688119CABADD00669D20 /* arrow_left.png in Resources */,
 				5AD6DAAA19C77A06006E4BC7 /* Images.xcassets in Resources */,
 				5AD6DA9C19C77A06006E4BC7 /* InfoPlist.strings in Resources */,
 				5AD6DAA519C77A06006E4BC7 /* Main.storyboard in Resources */,
+				FBA0687F19CAAE5200669D20 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A1104F719C9DAF4005317B9 /* CameraViewController.m in Sources */,
 				5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */,
 				5AD6DAA219C77A06006E4BC7 /* AppDelegate.m in Sources */,
 				5A098DC019C8C2DD00841805 /* TagDetailViewController.m in Sources */,

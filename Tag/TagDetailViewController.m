@@ -8,10 +8,39 @@
 //
 
 #import "TagDetailViewController.h"
+#define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
+#define radianConst M_PI/180.0
+
+#define RadiansToDegrees(radians)(radians * 180.0/M_PI)
+#define DegreesToRadians(degrees)(degrees * M_PI / 180.0)
 
 @interface TagDetailViewController () {
     CLLocationManager *locationManager;
     BOOL firstMapUpdate;
+    
+    CMDeviceMotionHandler motionHandler;
+    CMMotionManager     *motionManager;
+    NSOperationQueue    *opQ;
+    
+    // Graphics
+    UILabel             *compassDif;
+    UILabel             *compassFault;
+    
+    NSTimer             *updateTimer;
+    
+    float               oldHeading;
+    float               updatedHeading;
+    float               newYaw;
+    float               oldYaw;
+    float               offsetG;
+    float               updateCompass;
+    float               newCompassTarget;
+    float               currentYaw;
+    float               currentHeading;
+    float               compassDiff;
+    float               northOffest;
+    
+    float GeoAngle;
 }
 
 @end
@@ -34,9 +63,15 @@
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
         [dateFormatter setDateFormat:@"hh:mm a"];
-        self.timeLabel.text = [dateFormatter stringFromDate:self.tagDate];
+        self.mapView.userLocation.subtitle = [@"Tagged at: "
+                                              stringByAppendingString:
+                                              [dateFormatter stringFromDate:self.tagDate]];
     });
     firstMapUpdate = YES;
+    if (!self.isCalibrated) {
+        [self calibrate];
+        self.isCalibrated = YES;
+    }
 }
 
 - (void)viewDidLoad
@@ -47,12 +82,144 @@
     self.mapView.delegate = self;
     self.youLatLonButton.font = [UIFont systemFontOfSize:14];
     self.tagLatLonButton.font = [UIFont systemFontOfSize:14];
+    
+    oldHeading          = 0;
+    offsetG             = 0;
+    newCompassTarget    = 0;
+    
+    // Set up location manager
+    locationManager=[[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [locationManager startUpdatingHeading];
+    
+    // We listen to events from the locationManager
+    locationManager.delegate=self;
+    
+    // Set up motionManager
+    motionManager = [[CMMotionManager alloc]  init];
+    motionManager.deviceMotionUpdateInterval = 1.0/60.0;
+    opQ = [NSOperationQueue currentQueue];
+    
+    if(motionManager.isDeviceMotionAvailable) {
+        
+        // Listen to events from the motionManager
+        motionHandler = ^ (CMDeviceMotion *motion, NSError *error) {
+            CMAttitude *currentAttitude = motion.attitude;
+            float yawValue = currentAttitude.yaw; // Use the yaw value
+            
+            // Yaw values are in radians (-180 - 180), here we convert to degrees
+            float yawDegrees = CC_RADIANS_TO_DEGREES(yawValue);
+            currentYaw = yawDegrees;
+            
+            // We add new compass value together with new yaw value
+            yawDegrees = newCompassTarget + (yawDegrees - offsetG);
+            
+            // Degrees should always be positive
+            if(yawDegrees < 0) {
+                yawDegrees = yawDegrees + 360;
+            }
+            
+            compassDif.text = [NSString stringWithFormat:@"Gyro: %f",yawDegrees]; // Debug
+            
+            float gyroDegrees = (yawDegrees*radianConst);
+            
+            // If there is a new compass value the gyro graphic animates to this position
+            if(updateCompass) {
+                [UIView beginAnimations:nil context:NULL];
+                [UIView setAnimationDuration:0.25];
+                [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                [self.rotateImg setTransform:CGAffineTransformMakeRotation(gyroDegrees)];
+                [UIView commitAnimations];
+                updateCompass = 0;
+                
+            } else {
+                self.rotateImg.transform = CGAffineTransformMakeRotation(gyroDegrees);
+            }
+        };
+        
+        
+    } else {
+        NSLog(@"No Device Motion on device.");
+    }
+    
+    // Start listening to motionManager events
+    [motionManager startDeviceMotionUpdatesToQueue:opQ withHandler:motionHandler];
+    
+    // Start interval to run every other second
+    updateTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updater:) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
+
+// decides on direction to point at
+//northOffset becomes my reference to where I want the gyroscope to always origin from.
+
+- (void)updater:(NSTimer *)timer
+{
+    // If the compass hasn't moved in a while we can calibrate the gyro
+    if(updatedHeading == oldHeading) {
+        NSLog(@"Update gyro");
+        // Populate newCompassTarget with new compass value and the offset we set in calibrate
+        newCompassTarget = (0 - updatedHeading) + northOffest;
+        compassFault.text = [NSString stringWithFormat:@"newCompassTarget: %f",newCompassTarget]; // Debug
+        offsetG = currentYaw;
+        updateCompass = 1;
+    } else {
+        updateCompass = 0;
+    }
+    
+    oldHeading = updatedHeading;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+{
+    // Update variable updateHeading to be used in updater method
+    updatedHeading = newHeading.magneticHeading;
+    float headingFloat = 0 - newHeading.magneticHeading;
+    
+    // Update rotation of graphic compassImg
+    self.compassImg.transform = CGAffineTransformMakeRotation((headingFloat + northOffest)*radianConst);
+    
+    // Update rotation of graphic trueNorth
+    self.arrowImage.transform = CGAffineTransformMakeRotation(headingFloat*radianConst);
+}
+
+//-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+//{
+//    GeoAngle = [self setLatLonForDistanceAndAngle:newLocation];
+//}
+//
+//-(float)setLatLonForDistanceAndAngle:(CLLocation *)userlocation
+//{
+//    float lat1 = DegreesToRadians(userlocation.coordinate.latitude);
+//    float lon1 = DegreesToRadians(userlocation.coordinate.longitude);
+//    
+//    float lat2 = DegreesToRadians(self.tagCoordinate.latitude);
+//    float lon2 = DegreesToRadians(self.tagCoordinate.longitude);
+//    
+//    float dLon = lon2 - lon1;
+//    
+//    float y = sin(dLon) * cos(lat2);
+//    float x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon);
+//    float radiansBearing = atan2(y, x);
+//    if(radiansBearing < 0.0)
+//    {
+//        radiansBearing += 2*M_PI;
+//    }
+//    
+//    return radiansBearing;
+//}
+//
+//- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading
+//{
+//    float direction = -newHeading.trueHeading;
+//    
+//    self.arrowImage.transform=CGAffineTransformMakeRotation((direction* M_PI / 180)+ GeoAngle);
+//}
+
 
 -(void)showRoute:(MKDirectionsResponse *)response
 {
@@ -71,12 +238,13 @@
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    self.mapView.centerCoordinate = userLocation.location.coordinate;
+//    self.mapView.centerCoordinate = userLocation.location.coordinate;
     
     [self updateDirections];
     
     // position map window
     if (firstMapUpdate) {
+        self.mapView.centerCoordinate = userLocation.location.coordinate;
         [self updateMapWindow];
         firstMapUpdate = NO;
     }
@@ -142,9 +310,9 @@
                  self.onlineLabel.textColor = [UIColor colorWithRed:0.0f/255.0f green:128.0f/255.0f blue:0.0f/255.0f alpha:1.0f];
                  self.onlineLabel.text = @"online";
                  MKRoute *routeDetails = response.routes.lastObject;
-                 self.walkTimeLabel.text = [self stringFromTimeInterval:[routeDetails expectedTravelTime]];
+                 self.walkTimeLabel.text = [@"Walk Time: " stringByAppendingString:[self stringFromTimeInterval:[routeDetails expectedTravelTime]]];
                  [self.mapView addOverlay:routeDetails.polyline];
-                 self.distanceLabel.text = [NSString stringWithFormat:@"%0.1f Miles", routeDetails.distance/1609.344];
+                 self.distanceLabel.text = [NSString stringWithFormat:@"Distance: %0.1f Miles", routeDetails.distance/1609.344];
                  [self showRoute:response];
              });
          }
@@ -205,11 +373,20 @@
     [self presentViewController:messageController animated:YES completion:nil];
 }
 
-- (IBAction)tagLatLonButton:(UIButton *)sender {
+- (IBAction)tagLatLonButton:(UIButton *)sender
+{
     [self sendSMS:self.tagCoordinate withMessage:@"My Destination is: "];
 }
 
-- (IBAction)youLatLonButton:(UIButton *)sender {
+- (IBAction)youLatLonButton:(UIButton *)sender
+{
     [self sendSMS:self.mapView.userLocation.location.coordinate withMessage:@"My Current Location is: "];
+}
+- (void)calibrate
+{
+    northOffest = updatedHeading - 0;
+}
+- (IBAction)calibrateButton:(UIButton *)sender {
+    [self calibrate];
 }
 @end

@@ -13,6 +13,7 @@
 @interface TagViewController () {
     NSDate *tagDate;
     CLLocationCoordinate2D tagCoordinate;
+    NSUserDefaults *userDefaults;
 }
 
 @end
@@ -30,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    userDefaults = [NSUserDefaults standardUserDefaults];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,16 +41,15 @@
 
 - (IBAction)tagButton:(UIButton *)sender {
     CLLocationManager *locationManager = [[CLLocationManager alloc] init];
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    [locationManager startUpdatingLocation];
-    
+    locationManager.distanceFilter = kCLDistanceFilterNone; // What?
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     if([CLLocationManager locationServicesEnabled] &&
        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
         // current lat, lon
         tagCoordinate = locationManager.location.coordinate;
         // current time
         tagDate = [[NSDate alloc]init];
+        [userDefaults removeObjectForKey:@"imageURL"];
         [self performSegueWithIdentifier:@"tagDetailSegue" sender:sender];
     } else {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
@@ -71,6 +72,7 @@
         TagDetailViewController *tagDetailViewController = (TagDetailViewController *)segue.destinationViewController;
         tagDetailViewController.tagCoordinate = tagCoordinate;
         tagDetailViewController.tagDate = tagDate;
+        tagDetailViewController.isCalibrated = NO;
     }
 }
 

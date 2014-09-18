@@ -8,6 +8,7 @@
 //
 
 #import "TagDetailViewController.h"
+#import "TagAnnotation.h"
 #define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
 #define radianConst M_PI/180.0
 
@@ -23,9 +24,6 @@
     NSOperationQueue    *opQ;
     
     // Graphics
-    UILabel             *compassDif;
-    UILabel             *compassFault;
-    
     NSTimer             *updateTimer;
     
     float               oldHeading;
@@ -41,6 +39,8 @@
     float               northOffest;
     
     float GeoAngle;
+    
+    MKAnnotationView *userLocationView;
 }
 
 @end
@@ -60,18 +60,13 @@
     [super viewDidAppear:animated];
     dispatch_async(dispatch_get_main_queue(), ^{
         self.mapView.userLocation.title = @"You are Here";
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setDateFormat:@"hh:mm a"];
-        self.mapView.userLocation.subtitle = [@"Tagged at: "
-                                              stringByAppendingString:
-                                              [dateFormatter stringFromDate:self.tagDate]];
     });
     firstMapUpdate = YES;
     if (!self.isCalibrated) {
         [self calibrate];
         self.isCalibrated = YES;
     }
+    [self updateMapWindow];
 }
 
 - (void)viewDidLoad
@@ -82,6 +77,14 @@
     self.mapView.delegate = self;
     self.youLatLonButton.font = [UIFont systemFontOfSize:14];
     self.tagLatLonButton.font = [UIFont systemFontOfSize:14];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSString *tagTitle = [@"Tagged at: "
+                                 stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
+    TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
+    [self.mapView addAnnotation:tagAnnotation];
     
     oldHeading          = 0;
     offsetG             = 0;
@@ -119,7 +122,7 @@
                 yawDegrees = yawDegrees + 360;
             }
             
-            compassDif.text = [NSString stringWithFormat:@"Gyro: %f",yawDegrees]; // Debug
+            self.compassDiffLabel.text = [NSString stringWithFormat:@"Gyro: %f",yawDegrees]; // Debug
             
             float gyroDegrees = (yawDegrees*radianConst);
             
@@ -161,12 +164,12 @@
 {
     // If the compass hasn't moved in a while we can calibrate the gyro
     if(updatedHeading == oldHeading) {
-        NSLog(@"Update gyro");
-        // Populate newCompassTarget with new compass value and the offset we set in calibrate
-        newCompassTarget = (0 - updatedHeading) + northOffest;
-        compassFault.text = [NSString stringWithFormat:@"newCompassTarget: %f",newCompassTarget]; // Debug
-        offsetG = currentYaw;
-        updateCompass = 1;
+//        NSLog(@"Update gyro");
+//        // Populate newCompassTarget with new compass value and the offset we set in calibrate
+//        newCompassTarget = (0 - updatedHeading) + northOffest;
+//        self.compassFaultLabel.text = [NSString stringWithFormat:@"fault: %f",newCompassTarget]; // Debug
+//        offsetG = currentYaw;
+//        updateCompass = 1;
     } else {
         updateCompass = 0;
     }
@@ -185,6 +188,12 @@
     
     // Update rotation of graphic trueNorth
     self.arrowImage.transform = CGAffineTransformMakeRotation(headingFloat*radianConst);
+    
+    // user direction
+    CLLocationDirection direction = newHeading.magneticHeading;
+    
+    CGAffineTransform transform = CGAffineTransformMakeRotation(DegreesToRadians(direction));
+    userLocationView.transform = transform;
 }
 
 //-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -228,6 +237,40 @@
     }
 }
 
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    firstMapUpdate = YES;
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+//        [annotation ] = "h";
+        
+        userLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"userLocationIdentifier"];
+        
+        //use a custom image for the user annotation
+        userLocationView.image = [UIImage imageNamed:@"userArrow.png"];
+        
+        return userLocationView;
+        
+    } else if ([annotation isKindOfClass:[TagAnnotation class]]) {
+        TagAnnotation *tagAnnotation = (TagAnnotation *)annotation;
+        MKAnnotationView *tagAnnotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"TagAnnotation"];
+        
+        if (tagAnnotationView == nil) {
+            tagAnnotationView = tagAnnotation.annotationView;
+        } else {
+            tagAnnotationView.annotation = annotation;
+            //http://bakyelli.wordpress.com/2013/10/13/creating-custom-map-annotations-using-mkannotation-protocol/
+        }
+//        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//        [dateFormatter setDateFormat:@"hh:mm a"];
+//        tagAnnotationView.subtitle = [@"Tagged at: "
+//                                     stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
+        return tagAnnotationView;
+    } else {
+        return nil;
+    }
+    
+}
+
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id < MKOverlay >)overlay
 {
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
@@ -245,7 +288,7 @@
     // position map window
     if (firstMapUpdate) {
         self.mapView.centerCoordinate = userLocation.location.coordinate;
-        [self updateMapWindow];
+//        [self updateMapWindow];
         firstMapUpdate = NO;
     }
     

@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *rotateImg;
 @property (weak, nonatomic) IBOutlet UIImageView *compassImg;
 - (IBAction)calibrateButton:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *compassFaultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *compassDiffLabel;
 
 @property (strong, nonatomic) NSDate *tagDate;
 @property (nonatomic) CLLocationCoordinate2D tagCoordinate;

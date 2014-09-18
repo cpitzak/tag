@@ -23,6 +23,9 @@
 		5AD6DABB19C77A06006E4BC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */; };
 		5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DABC19C77A06006E4BC7 /* TagTests.m */; };
 		5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */; };
+		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
+		FB463F3119CB6204009898B9 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3019CB6204009898B9 /* tag.png */; };
+		FB9CCFF119CB4C410028A9F0 /* userArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9CCFF019CB4C410028A9F0 /* userArrow.png */; };
 		FBA0687F19CAAE5200669D20 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0687E19CAAE5200669D20 /* arrow.png */; };
 		FBA0688119CABADD00669D20 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0688019CABADD00669D20 /* arrow_left.png */; };
 /* End PBXBuildFile section */
@@ -61,6 +64,10 @@
 		5AD6DABC19C77A06006E4BC7 /* TagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagTests.m; sourceTree = "<group>"; };
 		5AD6DAC619C77BB0006E4BC7 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
 		5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
+		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
+		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
+		FB463F3019CB6204009898B9 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		FB9CCFF019CB4C410028A9F0 /* userArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userArrow.png; sourceTree = "<group>"; };
 		FBA0687E19CAAE5200669D20 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		FBA0688019CABADD00669D20 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +136,8 @@
 				5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */,
 				5A098DBE19C8C2DD00841805 /* TagDetailViewController.h */,
 				5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */,
+				FB463F2D19CB59AB009898B9 /* TagAnnotation.h */,
+				FB463F2E19CB59AB009898B9 /* TagAnnotation.m */,
 				5A1104F519C9DAF4005317B9 /* CameraViewController.h */,
 				5A1104F619C9DAF4005317B9 /* CameraViewController.m */,
 				5AD6DAA919C77A06006E4BC7 /* Images.xcassets */,
@@ -140,6 +149,8 @@
 		5AD6DA9819C77A06006E4BC7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FB463F3019CB6204009898B9 /* tag.png */,
+				FB9CCFF019CB4C410028A9F0 /* userArrow.png */,
 				FBA0688019CABADD00669D20 /* arrow_left.png */,
 				FBA0687E19CAAE5200669D20 /* arrow.png */,
 				5AD6DA9919C77A06006E4BC7 /* Tag-Info.plist */,
@@ -248,7 +259,9 @@
 				5AD6DAAA19C77A06006E4BC7 /* Images.xcassets in Resources */,
 				5AD6DA9C19C77A06006E4BC7 /* InfoPlist.strings in Resources */,
 				5AD6DAA519C77A06006E4BC7 /* Main.storyboard in Resources */,
+				FB9CCFF119CB4C410028A9F0 /* userArrow.png in Resources */,
 				FBA0687F19CAAE5200669D20 /* arrow.png in Resources */,
+				FB463F3119CB6204009898B9 /* tag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +285,7 @@
 				5AD6DAA219C77A06006E4BC7 /* AppDelegate.m in Sources */,
 				5A098DC019C8C2DD00841805 /* TagDetailViewController.m in Sources */,
 				5AD6DA9E19C77A06006E4BC7 /* main.m in Sources */,
+				FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

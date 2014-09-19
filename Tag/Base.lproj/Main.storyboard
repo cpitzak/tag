@@ -91,7 +91,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bullseye.png" translatesAutoresizingMaskIntoConstraints="NO" id="dLX-eg-Rtt">
-                                <rect key="frame" x="185" y="535" width="30" height="30"/>
+                                <rect key="frame" x="184" y="535" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

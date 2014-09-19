@@ -9,7 +9,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TagViewController.h"
 #import "TagDetailViewController.h"
-#import "ILTranslucentView.h"
 
 @interface TagViewController () {
     NSDate *tagDate;

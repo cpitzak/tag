@@ -18,6 +18,7 @@
 @interface TagDetailViewController () {
     CLLocationManager *locationManager;
     BOOL firstMapUpdate;
+    NSUserDefaults *userDefaults;
     
 //    CMDeviceMotionHandler motionHandler;
 //    CMMotionManager     *motionManager;
@@ -72,10 +73,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.mapView removeAnnotations:self.mapView.annotations];
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     
+    userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [self.mapView removeAnnotations:self.mapView.annotations];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setDateFormat:@"hh:mm a"];
@@ -453,5 +456,37 @@
     
     // Present message view controller on screen
     [self presentViewController:messageController animated:YES completion:nil];
+}
+
+- (IBAction)tagButton:(UIButton *)sender {
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    if([CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
+        // current lat, lon
+        self.tagCoordinate = locationManager.location.coordinate;
+        // current time
+        self.tagDate = [[NSDate alloc]init];
+        [userDefaults removeObjectForKey:@"imageURL"];
+        
+        [self.mapView removeAnnotations:self.mapView.annotations];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setDateFormat:@"hh:mm a"];
+        NSString *tagTitle = [@"Tagged at: "
+                              stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
+        TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
+        [self.mapView addAnnotation:tagAnnotation];
+        
+        firstMapUpdate = YES;
+        [self updateMapWindow];
+    } else {
+        UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
+                                                                        message:@"You currently have all location services for this device disabled.\
+                                              If you proceed, you will be asked to confirm whether location services should be reenabled."
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+        [servicesDisabledAlert show];
+    }
 }
 @end

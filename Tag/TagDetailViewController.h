@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *walkTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *onlineLabel;
 - (IBAction)smsButton:(UIButton *)sender;
+- (IBAction)tagButton:(UIButton *)sender;
 
 @property (strong, nonatomic) NSDate *tagDate;
 @property (nonatomic) CLLocationCoordinate2D tagCoordinate;

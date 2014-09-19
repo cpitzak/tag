@@ -1,44 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PMA-ZG-SD0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5Mp-1E-pDM">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Tag View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
-            <objects>
-                <viewController id="vXZ-lx-hvc" customClass="TagViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZh-vC-QYu">
-                                <rect key="frame" x="104" y="251" width="113" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                <state key="normal" title="Tag">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="tagButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QjT-ge-33d"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ohI-qa-FOJ"/>
-                    <connections>
-                        <segue destination="r9i-bv-tJV" kind="push" identifier="tagDetailSegue" id="ZCd-yi-2KK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="821" y="-21"/>
-        </scene>
         <!--Tag Detail View Controller-->
         <scene sceneID="ABb-i9-kGT">
             <objects>
@@ -113,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZQ-fc-q9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1250" y="-21"/>
+            <point key="canvasLocation" x="1776" y="-21"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="ydJ-iC-XcL">
@@ -159,25 +125,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ftv-Rq-aVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="-19"/>
+            <point key="canvasLocation" x="2194" y="-19"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="r5f-Nv-1OF">
+        <scene sceneID="zBz-oi-CfC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PMA-ZG-SD0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Mp-1E-pDM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d0E-Gz-aia">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9QV-Nt-K1x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="a1c-AV-pxT"/>
+                        <segue destination="r9i-bv-tJV" kind="relationship" relationship="rootViewController" id="94M-vh-OyX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="98k-R1-vby" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vos-ey-qE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="387" y="-21"/>
+            <point key="canvasLocation" x="1250" y="-21"/>
         </scene>
     </scenes>
     <resources>

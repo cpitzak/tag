@@ -78,14 +78,14 @@
     
     userDefaults = [NSUserDefaults standardUserDefaults];
     
-    [self.mapView removeAnnotations:self.mapView.annotations];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setDateFormat:@"hh:mm a"];
-    NSString *tagTitle = [@"Tagged at: "
-                                 stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
-    TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
-    [self.mapView addAnnotation:tagAnnotation];
+//    [self.mapView removeAnnotations:self.mapView.annotations];
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//    [dateFormatter setDateFormat:@"hh:mm a"];
+//    NSString *tagTitle = [@"Tagged at: "
+//                                 stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
+//    TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
+//    [self.mapView addAnnotation:tagAnnotation];
     
 //    oldHeading          = 0;
 //    offsetG             = 0;
@@ -468,6 +468,7 @@
         self.tagDate = [[NSDate alloc]init];
         [userDefaults removeObjectForKey:@"imageURL"];
         
+        [self.mapView removeOverlays:self.mapView.overlays];
         [self.mapView removeAnnotations:self.mapView.annotations];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];

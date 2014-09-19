@@ -15,22 +15,13 @@
 
 @interface TagDetailViewController : UIViewController <MKMapViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIButton *tagLatLonButton;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *walkTimeLabel;
-@property (weak, nonatomic) IBOutlet UIButton *youLatLonButton;
-- (IBAction)tagLatLonButton:(UIButton *)sender;
-- (IBAction)youLatLonButton:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UILabel *onlineLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *arrowImage;
-@property (weak, nonatomic) IBOutlet UIImageView *rotateImg;
-@property (weak, nonatomic) IBOutlet UIImageView *compassImg;
-- (IBAction)calibrateButton:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UILabel *compassFaultLabel;
-@property (weak, nonatomic) IBOutlet UILabel *compassDiffLabel;
+- (IBAction)smsButton:(UIButton *)sender;
 
 @property (strong, nonatomic) NSDate *tagDate;
 @property (nonatomic) CLLocationCoordinate2D tagCoordinate;
-@property (nonatomic) BOOL isCalibrated;
+//@property (nonatomic) BOOL isCalibrated;
 
 @end

@@ -9,6 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "TagViewController.h"
 #import "TagDetailViewController.h"
+#import "ILTranslucentView.h"
 
 @interface TagViewController () {
     NSDate *tagDate;
@@ -32,6 +33,13 @@
 {
     [super viewDidLoad];
     userDefaults = [NSUserDefaults standardUserDefaults];
+//    ILTranslucentView *view = [[ILTranslucentView alloc]initWithFrame:CGRectMake(0, 0, 250, 250)];
+//    [self.view addSubview:view];
+//    //optional:
+//    view.translucentAlpha = 0.8;
+//    view.translucentStyle = UIBarStyleDefault;
+//    view.translucentTintColor = [UIColor clearColor];
+//    view.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,7 +80,7 @@
         TagDetailViewController *tagDetailViewController = (TagDetailViewController *)segue.destinationViewController;
         tagDetailViewController.tagCoordinate = tagCoordinate;
         tagDetailViewController.tagDate = tagDate;
-        tagDetailViewController.isCalibrated = NO;
+//        tagDetailViewController.isCalibrated = NO;
     }
 }
 

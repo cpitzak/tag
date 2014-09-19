@@ -427,11 +427,12 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
-    
-    NSLog(@"you touched the disclosure indicator");
-    //launch a new view upon touching the disclosure indicator
-//    [self sendSMS:self.tagCoordinate withMessage:@"My Destination is: "];
-    
+    if ([view.annotation isKindOfClass:[TagAnnotation class]]) {
+        NSString *message = [NSString stringWithFormat:@"My Destination is: http://maps.google.com/?q=%f,%f",
+                             self.tagCoordinate.latitude,
+                             self.tagCoordinate.longitude];
+        [self sendSMS:message];
+    }
 }
 
 //- (IBAction)tagLatLonButton:(UIButton *)sender
@@ -451,23 +452,20 @@
 //    [self calibrate];
 //}
 - (IBAction)smsButton:(UIButton *)sender {
+    NSString *tagUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.tagCoordinate.latitude, self.tagCoordinate.longitude];
+    NSString *userLocationUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.mapView.userLocation.location.coordinate.latitude,
+                        self.mapView.userLocation.location.coordinate.longitude];
+    NSString *message = [NSString stringWithFormat: @"My current location is %@ and the location that I'm going to is %@", userLocationUrl, tagUrl];
+    [self sendSMS:message];
+}
+
+-(void)sendSMS:(NSString *)message
+{
     if(![MFMessageComposeViewController canSendText]) {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your device cannot send text messages" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         return;
     }
-    
-    //set receipients
-    //    NSArray *recipients = [NSArray arrayWithObjects:@"0650454323",@"0434320943",@"0560984122", nil];
-    
-    //set message text
-    //    NSString * message = @"http://maps.google.com/maps?q=lat,lng";
-    
-    NSString *tagUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.tagCoordinate.latitude, self.tagCoordinate.longitude];
-    NSString *userLocationUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.mapView.userLocation.location.coordinate.latitude,
-                        self.mapView.userLocation.location.coordinate.longitude];
-
-    NSString *message = [NSString stringWithFormat: @"My current location is %@ and the location that I'm going to is %@", userLocationUrl, tagUrl];
     
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
     messageController.messageComposeDelegate = self;

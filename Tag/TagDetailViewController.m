@@ -330,13 +330,15 @@
 
 -(void)updateMapWindow
 {
-    CLLocationDegrees srcLatitude = self.mapView.userLocation.location.coordinate.latitude;
-    CLLocationDegrees srcLongitude = self.mapView.userLocation.location.coordinate.longitude;
-    CLLocation *pointALocation = [[CLLocation alloc] initWithLatitude:srcLatitude longitude:srcLongitude];
-    CLLocation *pointBLocation = [[CLLocation alloc] initWithLatitude:self.tagCoordinate.latitude longitude:self.tagCoordinate.longitude];
-    CLLocationDistance d = [pointALocation distanceFromLocation:pointBLocation];
-    MKCoordinateRegion r = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 2*d, 2*d);
-    [self.mapView setRegion:r animated:NO];
+    if (CLLocationCoordinate2DIsValid(self.tagCoordinate) && CLLocationCoordinate2DIsValid(self.mapView.userLocation.location.coordinate)) {
+        CLLocationDegrees srcLatitude = self.mapView.userLocation.location.coordinate.latitude;
+        CLLocationDegrees srcLongitude = self.mapView.userLocation.location.coordinate.longitude;
+        CLLocation *pointALocation = [[CLLocation alloc] initWithLatitude:srcLatitude longitude:srcLongitude];
+        CLLocation *pointBLocation = [[CLLocation alloc] initWithLatitude:self.tagCoordinate.latitude longitude:self.tagCoordinate.longitude];
+        CLLocationDistance d = [pointALocation distanceFromLocation:pointBLocation];
+        MKCoordinateRegion r = MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.location.coordinate, 2*d, 2*d);
+        [self.mapView setRegion:r animated:NO];
+    }
 }
 
 - (void)updateDirections
@@ -515,6 +517,13 @@
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
     
+}
+
+- (IBAction)resetButton:(UIButton *)sender {
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {

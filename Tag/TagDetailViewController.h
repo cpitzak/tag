@@ -12,14 +12,18 @@
 #import <math.h>
 #import <CoreMotion/CoreMotion.h> // For the gyroscope
 #import <CoreLocation/CoreLocation.h> // For the compass
+#import <MobileCoreServices/MobileCoreServices.h>
 
-@interface TagDetailViewController : UIViewController <MKMapViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate>
+@interface TagDetailViewController : UIViewController <MKMapViewDelegate, MFMessageComposeViewControllerDelegate,
+CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *walkTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *onlineLabel;
 - (IBAction)smsButton:(UIButton *)sender;
 - (IBAction)tagButton:(UIButton *)sender;
+- (IBAction)cameraButton:(UIButton *)sender;
 
 @property (strong, nonatomic) NSDate *tagDate;
 @property (nonatomic) CLLocationCoordinate2D tagCoordinate;

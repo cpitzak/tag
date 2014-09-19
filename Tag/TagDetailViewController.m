@@ -9,6 +9,7 @@
 
 #import "TagDetailViewController.h"
 #import "TagAnnotation.h"
+#import "AssetsLibrary/AssetsLibrary.h"
 #define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
 #define radianConst M_PI/180.0
 
@@ -67,7 +68,12 @@
 //        [self calibrate];
 //        self.isCalibrated = YES;
 //    }
-    [self updateMapWindow];
+//    if (CLLocationCoordinate2DIsValid(self.tagCoordinate) && CLLocationCoordinate2DIsValid(self.mapView.userLocation.location.coordinate)) {
+//        NSLog(@"Coordinate valid");
+//        [self updateMapWindow];
+//    } else {
+//        NSLog(@"Coordinate invalid");
+//    }
 }
 
 - (void)viewDidLoad
@@ -77,6 +83,18 @@
     self.mapView.delegate = self;
     
     userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    //clear NSUserDefaults
+//    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+//    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    
+    NSDictionary *tagLocation = [userDefaults objectForKey:@"tagCoordinate"];
+    if (tagLocation) {
+        [self loadTagFromDisk:tagLocation];
+    } else {
+        self.tagCoordinate = kCLLocationCoordinate2DInvalid;
+    }
+    
     
 //    [self.mapView removeAnnotations:self.mapView.annotations];
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -304,7 +322,7 @@
     // position map window
     if (firstMapUpdate) {
         self.mapView.centerCoordinate = userLocation.location.coordinate;
-//        [self updateMapWindow];
+        [self updateMapWindow];
         firstMapUpdate = NO;
     }
     
@@ -458,28 +476,135 @@
     [self presentViewController:messageController animated:YES completion:nil];
 }
 
+#pragma mark - Navigation
+
+//-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+//{
+//    if ([identifier isEqualToString:@"pushTab"])
+//    {
+//        //don't put logic here
+//        //put code here only if you need to pass data
+//        //to the next screen
+//        return YES;
+//    }
+//    return NO;
+//}
+//
+//// In a storyboard-based application, you will often want to do a little preparation before navigation
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if([segue.identifier isEqualToString:@"cameraSegue"]){
+//        
+//        TagDetailViewController *tagDetailViewController = (TagDetailViewController *)segue.destinationViewController;
+//        tagDetailViewController.tagCoordinate = tagCoordinate;
+//        tagDetailViewController.tagDate = tagDate;
+//        //        tagDetailViewController.isCalibrated = NO;
+//    }
+//}
+
+- (IBAction)cameraButton:(UIButton *)sender {
+    NSString *imageURLString = [userDefaults objectForKey:@"imageURL"];
+    if (imageURLString) {
+        [self performSegueWithIdentifier:@"cameraSegue" sender:sender];
+    }else if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+        imagePicker.allowsEditing = NO;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    }
+    
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [userDefaults removeObjectForKey:@"imageURL"];
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+        UIImage *image = info[UIImagePickerControllerOriginalImage];
+        
+//        if (self.newMedia) {
+            //            UIImageWriteToSavedPhotosAlbum(image,
+            //                                           self,
+            //                                           @selector(image:finishedSavingWithError:contextInfo:),
+            //                                           nil);
+            //            UIImage *viewImage = image;  // --- mine was made from drawing context
+            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+            // Request to save the image to camera roll
+            [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation]
+                                  completionBlock:^(NSURL *assetURL, NSError *error){
+                                      if (error) {
+                                          NSLog(@"error");
+                                      } else {
+                                          NSLog(@"url %@", assetURL);
+                                          [userDefaults setObject:[assetURL absoluteString] forKey:@"imageURL"];
+                                          [userDefaults synchronize];
+                                      }
+                                  }];
+//        }
+    }
+    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        // Code here to support video if enabled
+    }
+}
+
+-(void)loadTagFromDisk:(NSDictionary *)tagLocation
+{
+    // current lat, lon
+    self.tagCoordinate = CLLocationCoordinate2DMake([[tagLocation objectForKey:@"lat"]doubleValue],
+                                                    [[tagLocation objectForKey:@"lon"]doubleValue]);
+    // current time
+    self.tagDate = [userDefaults objectForKey:@"tagDate"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSString *tagTitle = [@"Tagged at: "
+                          stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
+    TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
+    [self.mapView addAnnotation:tagAnnotation];
+    
+    firstMapUpdate = YES;
+//    [self updateMapWindow];
+}
+
+-(void)updateTagOnMap
+{
+    // current lat, lon
+    self.tagCoordinate = locationManager.location.coordinate;
+    // current time
+    self.tagDate = [[NSDate alloc]init];
+    [userDefaults setObject:self.tagDate forKey:@"tagDate"];
+    [userDefaults removeObjectForKey:@"imageURL"];
+    
+    [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSString *tagTitle = [@"Tagged at: "
+                          stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
+    TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
+    [self.mapView addAnnotation:tagAnnotation];
+    
+    // store tag coordinate
+    NSNumber *lat = [NSNumber numberWithDouble:self.tagCoordinate.latitude];
+    NSNumber *lon = [NSNumber numberWithDouble:self.tagCoordinate.longitude];
+    [userDefaults setObject:@{@"lat":lat,@"lon":lon} forKey:@"tagCoordinate"];
+    [userDefaults synchronize];
+    
+    firstMapUpdate = YES;
+    [self updateMapWindow];
+}
+
 - (IBAction)tagButton:(UIButton *)sender {
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     if([CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
-        // current lat, lon
-        self.tagCoordinate = locationManager.location.coordinate;
-        // current time
-        self.tagDate = [[NSDate alloc]init];
-        [userDefaults removeObjectForKey:@"imageURL"];
-        
-        [self.mapView removeOverlays:self.mapView.overlays];
-        [self.mapView removeAnnotations:self.mapView.annotations];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setDateFormat:@"hh:mm a"];
-        NSString *tagTitle = [@"Tagged at: "
-                              stringByAppendingString:[dateFormatter stringFromDate:self.tagDate]];
-        TagAnnotation *tagAnnotation = [[TagAnnotation alloc]initWithTitle:tagTitle coordinate:self.tagCoordinate];
-        [self.mapView addAnnotation:tagAnnotation];
-        
-        firstMapUpdate = YES;
-        [self updateMapWindow];
+        [self updateTagOnMap];
     } else {
         UIAlertView *servicesDisabledAlert = [[UIAlertView alloc] initWithTitle:@"Location Services Disabled"
                                                                         message:@"You currently have all location services for this device disabled.\
@@ -490,4 +615,5 @@
         [servicesDisabledAlert show];
     }
 }
+
 @end

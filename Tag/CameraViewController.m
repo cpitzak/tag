@@ -7,7 +7,7 @@
 //
 
 #import "CameraViewController.h"
-#import "AssetsLibrary/AssetsLibrary.h"
+#import "MBProgressHUD.h"
 
 @interface CameraViewController () {
     NSUserDefaults *userDefaults;
@@ -29,21 +29,16 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.view.backgroundColor = [UIColor blackColor];
     NSString *imageURLString = [userDefaults objectForKey:@"imageURL"];
     if (imageURLString) {
         [self loadImage:imageURLString];
-    } else {
-        [self.cameraButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    if (![userDefaults objectForKey:@"imageURL"]) {
-//        [self.cameraButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-//    }
-    
 }
 
 - (void)viewDidLoad
@@ -58,88 +53,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)cameraButton:(UIButton *)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-        self.newMedia = YES;
-    }
-}
-
-- (IBAction)cameraRollButton:(UIButton *)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-        self.newMedia = NO;
-    }
-}
-
-#pragma mark -
-#pragma mark UIImagePickerControllerDelegate
-
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [userDefaults removeObjectForKey:@"imageURL"];
-    NSString *mediaType = info[UIImagePickerControllerMediaType];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
-        UIImage *image = info[UIImagePickerControllerOriginalImage];
-        
-        self.cameraImageView.image = image;
-        if (self.newMedia) {
-//            UIImageWriteToSavedPhotosAlbum(image,
-//                                           self,
-//                                           @selector(image:finishedSavingWithError:contextInfo:),
-//                                           nil);
-//            UIImage *viewImage = image;  // --- mine was made from drawing context
-            ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-            // Request to save the image to camera roll
-            [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation]
-                                  completionBlock:^(NSURL *assetURL, NSError *error){
-                if (error) {
-                    NSLog(@"error");
-                } else {
-                    NSLog(@"url %@", assetURL);
-                    [userDefaults setObject:[assetURL absoluteString] forKey:@"imageURL"];
-                    [userDefaults synchronize];
-                }
-            }];
-        }
-    }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
-        // Code here to support video if enabled
-    }
-}
-
--(void)image:(UIImage *)image finishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
-    if (error) {
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: @"Save failed"
-                              message: @"Failed to save image"
-                              delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        [alert show];
-    }
-}
-
 -(void)loadImage:(NSString *)imageURLString
 {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Loading";
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
     ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
     {
         ALAssetRepresentation *rep = [myasset defaultRepresentation];
         CGImageRef iref = [rep fullResolutionImage];
         if (iref) {
-            self.cameraImageView.image = [UIImage imageWithCGImage:[rep fullScreenImage] scale:[rep scale] orientation:0];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.cameraImageView.image = [UIImage imageWithCGImage:[rep fullScreenImage] scale:[rep scale] orientation:0];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
         }
     };
     
@@ -156,6 +83,12 @@
                        resultBlock:resultblock
                       failureBlock:failureblock];
     }
+        });
 }
 
+- (IBAction)dontUseButton:(UIButton *)sender {
+    [userDefaults removeObjectForKey:@"imageURL"];
+    self.cameraImageView.image = nil;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

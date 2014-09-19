@@ -8,14 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
-@interface CameraViewController : UIViewController<UIImagePickerControllerDelegate,
-UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController
 
-@property (nonatomic) BOOL newMedia;
 @property (strong, nonatomic) IBOutlet UIImageView *cameraImageView;
-- (IBAction)cameraButton:(UIButton *)sender;
-- (IBAction)cameraRollButton:(UIButton *)sender;
-@property (weak, nonatomic) IBOutlet UIButton *cameraButton;
+- (IBAction)dontUseButton:(UIButton *)sender;
 
 @end

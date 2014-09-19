@@ -25,6 +25,7 @@
 		5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */; };
 		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
 		FB463F3119CB6204009898B9 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3019CB6204009898B9 /* tag.png */; };
+		FB9CDC7A19CCB79200770B80 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */; };
 		FB9D6B3319CBC172007069A8 /* userArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9D6B3219CBC172007069A8 /* userArrow.png */; };
 		FB9F9BD419CC0B2F008FF2DB /* sms.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD319CC0B2F008FF2DB /* sms.png */; };
 		FB9F9BD619CC0B38008FF2DB /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD519CC0B38008FF2DB /* camera.png */; };
@@ -70,6 +71,8 @@
 		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
 		FB463F3019CB6204009898B9 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		FB9CDC7819CCB79200770B80 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FB9D6B3219CBC172007069A8 /* userArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userArrow.png; sourceTree = "<group>"; };
 		FB9F9BD319CC0B2F008FF2DB /* sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms.png; sourceTree = "<group>"; };
 		FB9F9BD519CC0B38008FF2DB /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 		5AD6DA9719C77A06006E4BC7 /* Tag */ = {
 			isa = PBXGroup;
 			children = (
+				FB9CDC7819CCB79200770B80 /* MBProgressHUD.h */,
+				FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */,
 				5AD6DAA019C77A06006E4BC7 /* AppDelegate.h */,
 				5AD6DAA119C77A06006E4BC7 /* AppDelegate.m */,
 				5AD6DAA319C77A06006E4BC7 /* Main.storyboard */,
@@ -298,6 +303,7 @@
 				5A098DC019C8C2DD00841805 /* TagDetailViewController.m in Sources */,
 				5AD6DA9E19C77A06006E4BC7 /* main.m in Sources */,
 				FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */,
+				FB9CDC7A19CCB79200770B80 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

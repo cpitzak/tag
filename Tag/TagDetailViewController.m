@@ -61,6 +61,10 @@
         self.tagCoordinate = kCLLocationCoordinate2DInvalid;
     }
     
+    if ([userDefaults objectForKey:@"mapType"]) {
+        self.mapView.mapType = [[userDefaults objectForKey:@"mapType"]integerValue];
+    }
+    
     // Set up location manager
     locationManager=[[CLLocationManager alloc] init];
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -262,8 +266,9 @@
 }
 
 - (IBAction)resetButton:(UIButton *)sender {
-    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
-    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    [userDefaults removeObjectForKey:@"tagDate"];
+    [userDefaults removeObjectForKey:@"imageURL"];
+    [userDefaults removeObjectForKey:@"tagCoordinate"];
     [self.mapView removeOverlays:self.mapView.overlays];
     [self.mapView removeAnnotations:self.mapView.annotations];
 }
@@ -361,9 +366,12 @@
 - (IBAction)mapTypeButton:(UIButton *)sender {
     MKMapType mapType = [self.mapView mapType];
     if (mapType == MKMapTypeStandard) {
-        [self.mapView setMapType:MKMapTypeHybrid];
+        mapType = MKMapTypeHybrid;
     } else {
-        [self.mapView setMapType:MKMapTypeStandard];
+        mapType = MKMapTypeStandard;
     }
+    [self.mapView setMapType:mapType];
+    [userDefaults setInteger:mapType forKey:@"mapType"];
+    [userDefaults synchronize];
 }
 @end

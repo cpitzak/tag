@@ -49,6 +49,10 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     
+    self.mapTypeBackgroundButton.layer.cornerRadius = 2;
+    self.mapTypeBackgroundButton.layer.borderWidth = 1;
+    self.mapTypeBackgroundButton.alpha = 0.5;
+    
     userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *tagLocation = [userDefaults objectForKey:@"tagCoordinate"];
     if (tagLocation) {
@@ -262,6 +266,15 @@
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     [self.mapView removeOverlays:self.mapView.overlays];
     [self.mapView removeAnnotations:self.mapView.annotations];
+}
+
+- (IBAction)mapTypeButton:(UIButton *)sender {
+    MKMapType mapType = [self.mapView mapType];
+    if (mapType == MKMapTypeStandard) {
+        [self.mapView setMapType:MKMapTypeHybrid];
+    } else {
+        [self.mapView setMapType:MKMapTypeStandard];
+    }
 }
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {

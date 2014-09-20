@@ -133,17 +133,11 @@
 		5AD6DA9719C77A06006E4BC7 /* Tag */ = {
 			isa = PBXGroup;
 			children = (
-				FB9CDC7819CCB79200770B80 /* MBProgressHUD.h */,
-				FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */,
+				FB34181719CD6BEC00BA9C95 /* Utilities */,
 				5AD6DAA019C77A06006E4BC7 /* AppDelegate.h */,
 				5AD6DAA119C77A06006E4BC7 /* AppDelegate.m */,
 				5AD6DAA319C77A06006E4BC7 /* Main.storyboard */,
-				5A098DBE19C8C2DD00841805 /* TagDetailViewController.h */,
-				5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */,
-				FB463F2D19CB59AB009898B9 /* TagAnnotation.h */,
-				FB463F2E19CB59AB009898B9 /* TagAnnotation.m */,
-				5A1104F519C9DAF4005317B9 /* CameraViewController.h */,
-				5A1104F619C9DAF4005317B9 /* CameraViewController.m */,
+				FB34181619CD6BD700BA9C95 /* ViewControllers */,
 				5AD6DAA919C77A06006E4BC7 /* Images.xcassets */,
 				5AD6DA9819C77A06006E4BC7 /* Supporting Files */,
 			);
@@ -183,6 +177,28 @@
 				5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB34181619CD6BD700BA9C95 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A098DBE19C8C2DD00841805 /* TagDetailViewController.h */,
+				5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */,
+				FB463F2D19CB59AB009898B9 /* TagAnnotation.h */,
+				FB463F2E19CB59AB009898B9 /* TagAnnotation.m */,
+				5A1104F519C9DAF4005317B9 /* CameraViewController.h */,
+				5A1104F619C9DAF4005317B9 /* CameraViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FB34181719CD6BEC00BA9C95 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FB9CDC7819CCB79200770B80 /* MBProgressHUD.h */,
+				FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

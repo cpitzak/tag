@@ -76,32 +76,31 @@
                                     <action selector="resetButton:" destination="r9i-bv-tJV" eventType="touchUpInside" id="5nw-II-JL5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-cO-ATn">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffh-cO-ATn">
                                 <rect key="frame" x="6" y="70" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRm-HD-LUH">
-                                <rect key="frame" x="8" y="72" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="mapType.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
                                 <connections>
-                                    <action selector="mapTypeButton:" destination="r9i-bv-tJV" eventType="touchUpInside" id="gsl-iW-kkH"/>
+                                    <action selector="mapTypeButton:" destination="r9i-bv-tJV" eventType="touchUpInside" id="W6U-Wj-6QM"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mapType.png" translatesAutoresizingMaskIntoConstraints="NO" id="r4S-M2-icx">
+                                <rect key="frame" x="8" y="72" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="N4d-9M-Aqk"/>
                     <connections>
                         <outlet property="distanceLabel" destination="jt2-6y-54V" id="Z6M-Vx-mIG"/>
-                        <outlet property="mapTypeBackgroundButton" destination="ffh-cO-ATn" id="BdN-XX-cqG"/>
-                        <outlet property="mapTypeButton" destination="fRm-HD-LUH" id="TEO-Ts-57h"/>
+                        <outlet property="mapTypeButton" destination="ffh-cO-ATn" id="wBi-dS-Tkh"/>
                         <outlet property="mapView" destination="Nfd-D7-e1c" id="vW9-q7-ElQ"/>
                         <outlet property="onlineLabel" destination="WZi-4E-hgs" id="8Na-l2-QCK"/>
                         <outlet property="walkTimeLabel" destination="vmu-Zr-J24" id="BFM-Uz-rUg"/>

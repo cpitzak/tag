@@ -13,6 +13,6 @@
 @interface CameraViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *cameraImageView;
-- (IBAction)dontUseButton:(UIButton *)sender;
+- (IBAction)dontUseButton:(UIBarButtonItem *)sender;
 
 @end

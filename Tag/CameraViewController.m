@@ -85,7 +85,7 @@
         });
 }
 
-- (IBAction)dontUseButton:(UIButton *)sender {
+- (IBAction)dontUseButton:(UIBarButtonItem *)sender {
     [userDefaults removeObjectForKey:@"imageURL"];
     self.cameraImageView.image = nil;
     [self.navigationController popViewControllerAnimated:YES];

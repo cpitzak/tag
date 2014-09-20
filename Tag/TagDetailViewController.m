@@ -283,9 +283,9 @@
                                       if (error) {
                                           NSLog(@"error");
                                       } else {
-                                          NSLog(@"url %@", assetURL);
                                           [userDefaults setObject:[assetURL absoluteString] forKey:@"imageURL"];
                                           [userDefaults synchronize];
+                                          NSLog(@"url %@", assetURL);
                                       }
                                   }];
     }

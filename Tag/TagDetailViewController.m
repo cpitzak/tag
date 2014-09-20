@@ -46,6 +46,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showPan)];
+    panGesture.delegate = self;
+    [self.mapView addGestureRecognizer:panGesture];
+    
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     
@@ -139,6 +143,16 @@
                   coordinateB:self.mapView.userLocation.location.coordinate];
         firstMapUpdate = NO;
     }
+}
+
+- (void)showPan
+{
+    NSLog(@"pan!");
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 -(void)updateMapWindow:(CLLocationCoordinate2D)coordinateA coordinateB:(CLLocationCoordinate2D)coordinateB

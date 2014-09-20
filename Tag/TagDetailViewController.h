@@ -16,7 +16,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface TagDetailViewController : UIViewController <MKMapViewDelegate, MFMessageComposeViewControllerDelegate,
-CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;

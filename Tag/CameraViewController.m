@@ -70,7 +70,6 @@
         }
     };
     
-    //
     ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
     {
         NSLog(@"booya, cant get image - %@",[myerror localizedDescription]);

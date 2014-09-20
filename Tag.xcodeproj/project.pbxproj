@@ -22,7 +22,6 @@
 		5AD6DAB319C77A06006E4BC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9519C77A06006E4BC7 /* UIKit.framework */; };
 		5AD6DABB19C77A06006E4BC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */; };
 		5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DABC19C77A06006E4BC7 /* TagTests.m */; };
-		5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */; };
 		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
 		FB463F3119CB6204009898B9 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3019CB6204009898B9 /* tag.png */; };
 		FB9CDC7A19CCB79200770B80 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */; };
@@ -31,8 +30,6 @@
 		FB9F9BD419CC0B2F008FF2DB /* sms.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD319CC0B2F008FF2DB /* sms.png */; };
 		FB9F9BD619CC0B38008FF2DB /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD519CC0B38008FF2DB /* camera.png */; };
 		FB9F9BD819CC14EE008FF2DB /* bullseye.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD719CC14EE008FF2DB /* bullseye.png */; };
-		FBA0687F19CAAE5200669D20 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0687E19CAAE5200669D20 /* arrow.png */; };
-		FBA0688119CABADD00669D20 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = FBA0688019CABADD00669D20 /* arrow_left.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +64,6 @@
 		5AD6DAB819C77A06006E4BC7 /* TagTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TagTests-Info.plist"; sourceTree = "<group>"; };
 		5AD6DABA19C77A06006E4BC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5AD6DABC19C77A06006E4BC7 /* TagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagTests.m; sourceTree = "<group>"; };
-		5AD6DAC619C77BB0006E4BC7 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
-		5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
 		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
 		FB463F3019CB6204009898B9 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
@@ -79,8 +74,6 @@
 		FB9F9BD319CC0B2F008FF2DB /* sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms.png; sourceTree = "<group>"; };
 		FB9F9BD519CC0B38008FF2DB /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		FB9F9BD719CC14EE008FF2DB /* bullseye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullseye.png; sourceTree = "<group>"; };
-		FBA0687E19CAAE5200669D20 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		FBA0688019CABADD00669D20 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +138,6 @@
 				5AD6DAA019C77A06006E4BC7 /* AppDelegate.h */,
 				5AD6DAA119C77A06006E4BC7 /* AppDelegate.m */,
 				5AD6DAA319C77A06006E4BC7 /* Main.storyboard */,
-				5AD6DAC619C77BB0006E4BC7 /* TagViewController.h */,
-				5AD6DAC719C77BB0006E4BC7 /* TagViewController.m */,
 				5A098DBE19C8C2DD00841805 /* TagDetailViewController.h */,
 				5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */,
 				FB463F2D19CB59AB009898B9 /* TagAnnotation.h */,
@@ -168,8 +159,6 @@
 				FB9F9BD319CC0B2F008FF2DB /* sms.png */,
 				FB9D6B3219CBC172007069A8 /* userArrow.png */,
 				FB463F3019CB6204009898B9 /* tag.png */,
-				FBA0688019CABADD00669D20 /* arrow_left.png */,
-				FBA0687E19CAAE5200669D20 /* arrow.png */,
 				5AD6DA9919C77A06006E4BC7 /* Tag-Info.plist */,
 				5AD6DA9A19C77A06006E4BC7 /* InfoPlist.strings */,
 				5AD6DA9D19C77A06006E4BC7 /* main.m */,
@@ -272,7 +261,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBA0688119CABADD00669D20 /* arrow_left.png in Resources */,
 				FB9D6B3319CBC172007069A8 /* userArrow.png in Resources */,
 				5AD6DAAA19C77A06006E4BC7 /* Images.xcassets in Resources */,
 				5AD6DA9C19C77A06006E4BC7 /* InfoPlist.strings in Resources */,
@@ -280,7 +268,6 @@
 				FB9CDC7C19CCCC6300770B80 /* delete.png in Resources */,
 				5AD6DAA519C77A06006E4BC7 /* Main.storyboard in Resources */,
 				FB9F9BD419CC0B2F008FF2DB /* sms.png in Resources */,
-				FBA0687F19CAAE5200669D20 /* arrow.png in Resources */,
 				FB9F9BD819CC14EE008FF2DB /* bullseye.png in Resources */,
 				FB463F3119CB6204009898B9 /* tag.png in Resources */,
 			);
@@ -302,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A1104F719C9DAF4005317B9 /* CameraViewController.m in Sources */,
-				5AD6DAC819C77BB0006E4BC7 /* TagViewController.m in Sources */,
 				5AD6DAA219C77A06006E4BC7 /* AppDelegate.m in Sources */,
 				5A098DC019C8C2DD00841805 /* TagDetailViewController.m in Sources */,
 				5AD6DA9E19C77A06006E4BC7 /* main.m in Sources */,

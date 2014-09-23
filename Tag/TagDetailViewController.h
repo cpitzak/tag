@@ -28,6 +28,7 @@ CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControll
 - (IBAction)cameraButton:(UIButton *)sender;
 - (IBAction)resetButton:(UIButton *)sender;
 - (IBAction)mapTypeButton:(UIButton *)sender;
+- (IBAction)repositionButton:(UIButton *)sender;
 
 @property (strong, nonatomic) NSDate *tagDate;
 @property (nonatomic) CLLocationCoordinate2D tagCoordinate;

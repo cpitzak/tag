@@ -388,4 +388,9 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     [userDefaults setInteger:mapType forKey:@"mapType"];
     [userDefaults synchronize];
 }
+
+- (IBAction)repositionButton:(UIButton *)sender {
+    [self updateMapWindow:self.mapView.userLocation.location.coordinate
+              coordinateB:self.mapView.userLocation.location.coordinate];
+}
 @end

@@ -89,6 +89,23 @@
                                     <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
                                 </accessibility>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIY-2r-0gf">
+                                <rect key="frame" x="85" y="534" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c5D-KS-Wfv">
+                                <rect key="frame" x="93" y="535" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="gps.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="repositionButton:" destination="r9i-bv-tJV" eventType="touchUpInside" id="vlB-Dp-NdT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -159,11 +176,29 @@
             </objects>
             <point key="canvasLocation" x="1870" y="-21"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Ied-ur-C9C">
+            <objects>
+                <viewController id="3rN-Z5-hnx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vHv-OS-CLR"/>
+                        <viewControllerLayoutGuide type="bottom" id="1L3-3O-Dfc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d58-va-iTc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GcL-Jd-dqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="bullseye.png" width="45" height="45"/>
         <image name="camera.png" width="64" height="64"/>
         <image name="delete.png" width="32" height="32"/>
+        <image name="gps.png" width="30" height="30"/>
         <image name="mapType.png" width="32" height="32"/>
         <image name="sms.png" width="87" height="87"/>
     </resources>

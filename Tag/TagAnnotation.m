@@ -20,16 +20,4 @@
     return self;
 }
 
--(MKAnnotationView *)annotationView
-{
-    MKAnnotationView *annotationView = [[MKAnnotationView alloc]initWithAnnotation:self
-                                                                   reuseIdentifier:@"TagAnnotation"];
-    annotationView.enabled = YES;
-    annotationView.canShowCallout = YES;
-    annotationView.image = [UIImage imageNamed:@"pin.png"];
-    annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    
-    return annotationView;
-}
-
 @end

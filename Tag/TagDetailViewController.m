@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Pitzak, Clint J. All rights reserved.
 //
 
-#import "TagDetailViewController.h"
+#import "SVPulsingAnnotationView.h"
 #import "TagAnnotation.h"
+#import "TagDetailViewController.h"
 #import "AssetsLibrary/AssetsLibrary.h"
 
 #define RadiansToDegrees(radians)(radians * 180.0 / M_PI)
@@ -100,24 +101,25 @@
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     firstMapUpdate = YES;
     if ([annotation isKindOfClass:[MKUserLocation class]]) {
-        userLocationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"userLocationIdentifier"];
-        
-        userLocationView.image = [UIImage imageNamed:@"userArrow.png"];
-        userLocationView.canShowCallout = YES;
-        userLocationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-
-        return userLocationView;
+        static NSString *identifier = @"currentLocation";
+		SVPulsingAnnotationView *pulsingView = (SVPulsingAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+		
+		if(pulsingView == nil) {
+			pulsingView = [[SVPulsingAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            pulsingView.annotationColor = [UIColor colorWithRed:0.678431 green:0 blue:0 alpha:1];
+            pulsingView.canShowCallout = YES;
+            [pulsingView setImage:[UIImage imageNamed:@"userArrow.png"]];
+            pulsingView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        }
+		return pulsingView;
         
     } else if ([annotation isKindOfClass:[TagAnnotation class]]) {
-        TagAnnotation *tagAnnotation = (TagAnnotation *)annotation;
-        MKAnnotationView *tagAnnotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:@"TagAnnotation"];
-        
-        if (tagAnnotationView == nil) {
-            tagAnnotationView = tagAnnotation.annotationView;
-        } else {
-            tagAnnotationView.annotation = annotation;
-        }
-        return tagAnnotationView;
+        MKPinAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"tagPinAnnotation"];
+        pinView.pinColor = MKPinAnnotationColorRed;
+        pinView.animatesDrop = TRUE;
+        pinView.canShowCallout = YES;
+        pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        return pinView;
     } else {
         return nil;
     }

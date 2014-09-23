@@ -23,6 +23,7 @@
 		5AD6DABB19C77A06006E4BC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */; };
 		5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DABC19C77A06006E4BC7 /* TagTests.m */; };
 		FB12F51B19D10E57006D5B5B /* gps.png in Resources */ = {isa = PBXBuildFile; fileRef = FB12F51A19D10E57006D5B5B /* gps.png */; };
+		FB12F51D19D10FA4006D5B5B /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = FB12F51C19D10FA4006D5B5B /* pin.png */; };
 		FB34181919CD6E9400BA9C95 /* mapType.png in Resources */ = {isa = PBXBuildFile; fileRef = FB34181819CD6E9400BA9C95 /* mapType.png */; };
 		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
 		FB463F3119CB6204009898B9 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3019CB6204009898B9 /* tag.png */; };
@@ -67,6 +68,7 @@
 		5AD6DABA19C77A06006E4BC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5AD6DABC19C77A06006E4BC7 /* TagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagTests.m; sourceTree = "<group>"; };
 		FB12F51A19D10E57006D5B5B /* gps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps.png; sourceTree = "<group>"; };
+		FB12F51C19D10FA4006D5B5B /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		FB34181819CD6E9400BA9C95 /* mapType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapType.png; sourceTree = "<group>"; };
 		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		FB34181A19CD6E9B00BA9C95 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				FB12F51C19D10FA4006D5B5B /* pin.png */,
 				FB12F51A19D10E57006D5B5B /* gps.png */,
 				FB34181819CD6E9400BA9C95 /* mapType.png */,
 				FB9CDC7B19CCCC6300770B80 /* delete.png */,
@@ -300,6 +303,7 @@
 				FB9CDC7C19CCCC6300770B80 /* delete.png in Resources */,
 				5AD6DAA519C77A06006E4BC7 /* Main.storyboard in Resources */,
 				FB9F9BD419CC0B2F008FF2DB /* sms.png in Resources */,
+				FB12F51D19D10FA4006D5B5B /* pin.png in Resources */,
 				FB9F9BD819CC14EE008FF2DB /* bullseye.png in Resources */,
 				FB463F3119CB6204009898B9 /* tag.png in Resources */,
 			);

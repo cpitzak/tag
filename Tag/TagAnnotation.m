@@ -26,7 +26,7 @@
                                                                    reuseIdentifier:@"TagAnnotation"];
     annotationView.enabled = YES;
     annotationView.canShowCallout = YES;
-    annotationView.image = [UIImage imageNamed:@"tag.png"];
+    annotationView.image = [UIImage imageNamed:@"pin.png"];
     annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
     return annotationView;

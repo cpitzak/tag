@@ -38,7 +38,7 @@
 {
     [super viewDidAppear:animated];
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.mapView.userLocation.title = @"SMS Your Location";
+        self.mapView.userLocation.title = @"Current Location";
     });
     firstMapUpdate = YES;
 }
@@ -106,6 +106,7 @@
         
         userLocationView.image = [UIImage imageNamed:@"userArrow.png"];
         userLocationView.canShowCallout = YES;
+        userLocationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
 
         return userLocationView;
         
@@ -234,6 +235,11 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
         NSString *message = [NSString stringWithFormat:@"My Destination is: http://maps.google.com/?q=%f,%f",
                              self.tagCoordinate.latitude,
                              self.tagCoordinate.longitude];
+        [self sendSMS:message];
+    } else if ([view.annotation isKindOfClass:[MKUserLocation class]]) {
+        NSString *userLocationUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.mapView.userLocation.location.coordinate.latitude,
+                                     self.mapView.userLocation.location.coordinate.longitude];
+        NSString *message = [NSString stringWithFormat: @"My current location is %@", userLocationUrl];
         [self sendSMS:message];
     }
 }

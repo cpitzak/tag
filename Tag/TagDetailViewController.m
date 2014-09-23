@@ -9,10 +9,8 @@
 #import "TagDetailViewController.h"
 #import "TagAnnotation.h"
 #import "AssetsLibrary/AssetsLibrary.h"
-#define CC_RADIANS_TO_DEGREES(__ANGLE__) ((__ANGLE__) / (float)M_PI * 180.0f)
-#define radianConst M_PI/180.0
 
-#define RadiansToDegrees(radians)(radians * 180.0/M_PI)
+#define RadiansToDegrees(radians)(radians * 180.0 / M_PI)
 #define DegreesToRadians(degrees)(degrees * M_PI / 180.0)
 
 @interface TagDetailViewController () {
@@ -178,7 +176,8 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     MKMapItem *srcMapItem = [[MKMapItem alloc]initWithPlacemark:source];
     [srcMapItem setName:@""];
     
-    MKPlacemark *destination = [[MKPlacemark alloc]initWithCoordinate:CLLocationCoordinate2DMake(self.tagCoordinate.latitude, self.tagCoordinate.longitude)
+    MKPlacemark *destination = [[MKPlacemark alloc]initWithCoordinate:CLLocationCoordinate2DMake(self.tagCoordinate.latitude,
+                                                                                                 self.tagCoordinate.longitude)
                                                     addressDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"",@"", nil] ];
     
     MKMapItem *distMapItem = [[MKMapItem alloc]initWithPlacemark:destination];

@@ -176,23 +176,6 @@
             </objects>
             <point key="canvasLocation" x="1870" y="-21"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ied-ur-C9C">
-            <objects>
-                <viewController id="3rN-Z5-hnx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vHv-OS-CLR"/>
-                        <viewControllerLayoutGuide type="bottom" id="1L3-3O-Dfc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="d58-va-iTc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GcL-Jd-dqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="bullseye.png" width="45" height="45"/>

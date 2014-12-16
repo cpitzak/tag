@@ -19,6 +19,7 @@
     BOOL firstMapUpdate;
     NSUserDefaults *userDefaults;
     MKAnnotationView *userLocationView;
+    NSString *signature;
 }
 
 @end
@@ -45,6 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    signature = [NSString stringWithFormat:@"--Tag iPhone App"];
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(showPan)];
     panGesture.delegate = self;
     [self.mapView addGestureRecognizer:panGesture];
@@ -109,7 +111,7 @@
 			pulsingView = [[SVPulsingAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             pulsingView.annotationColor = [UIColor colorWithRed:0.678431 green:0 blue:0 alpha:1];
             pulsingView.canShowCallout = YES;
-            [pulsingView setImage:[UIImage imageNamed:@"userArrow.png"]];
+//            [pulsingView setImage:[UIImage imageNamed:@"userArrow.png"]];
             pulsingView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         }
 		return pulsingView;
@@ -234,14 +236,15 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control{
     if ([view.annotation isKindOfClass:[TagAnnotation class]]) {
-        NSString *message = [NSString stringWithFormat:@"My Destination is: http://maps.google.com/?q=%f,%f",
+        NSString *message = [NSString stringWithFormat:@"My Destination is: http://maps.google.com/?q=%f,%f %@",
                              self.tagCoordinate.latitude,
-                             self.tagCoordinate.longitude];
+                             self.tagCoordinate.longitude,
+                             signature];
         [self sendSMS:message];
     } else if ([view.annotation isKindOfClass:[MKUserLocation class]]) {
         NSString *userLocationUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.mapView.userLocation.location.coordinate.latitude,
                                      self.mapView.userLocation.location.coordinate.longitude];
-        NSString *message = [NSString stringWithFormat: @"My current location is %@", userLocationUrl];
+        NSString *message = [NSString stringWithFormat: @"My current location is %@ %@", userLocationUrl, signature];
         [self sendSMS:message];
     }
 }
@@ -250,7 +253,7 @@ shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherG
     NSString *tagUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.tagCoordinate.latitude, self.tagCoordinate.longitude];
     NSString *userLocationUrl = [NSString stringWithFormat:@"http://maps.google.com/?q=%f,%f", self.mapView.userLocation.location.coordinate.latitude,
                         self.mapView.userLocation.location.coordinate.longitude];
-    NSString *message = [NSString stringWithFormat: @"My current location is %@ and the location that I'm going to is %@", userLocationUrl, tagUrl];
+    NSString *message = [NSString stringWithFormat: @"My current location is %@ and the location that I'm going to is %@ %@", userLocationUrl, tagUrl, signature];
     [self sendSMS:message];
 }
 

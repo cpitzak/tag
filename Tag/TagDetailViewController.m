@@ -70,6 +70,7 @@
     
     // Set up location manager
     locationManager=[[CLLocationManager alloc] init];
+    [locationManager requestWhenInUseAuthorization];
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     [locationManager startUpdatingHeading];
     

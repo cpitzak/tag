@@ -62,8 +62,6 @@
     NSDictionary *tagLocation = [userDefaults objectForKey:@"tagCoordinate"];
     if (tagLocation) {
         [self loadTagFromDisk:tagLocation];
-    } else {
-        self.tagCoordinate = kCLLocationCoordinate2DInvalid;
     }
     
     if ([userDefaults objectForKey:@"mapType"]) {

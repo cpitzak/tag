@@ -23,13 +23,10 @@
 		5AD6DABB19C77A06006E4BC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */; };
 		5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DABC19C77A06006E4BC7 /* TagTests.m */; };
 		FB12F51B19D10E57006D5B5B /* gps.png in Resources */ = {isa = PBXBuildFile; fileRef = FB12F51A19D10E57006D5B5B /* gps.png */; };
-		FB12F51D19D10FA4006D5B5B /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = FB12F51C19D10FA4006D5B5B /* pin.png */; };
 		FB34181919CD6E9400BA9C95 /* mapType.png in Resources */ = {isa = PBXBuildFile; fileRef = FB34181819CD6E9400BA9C95 /* mapType.png */; };
 		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
-		FB463F3119CB6204009898B9 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = FB463F3019CB6204009898B9 /* tag.png */; };
 		FB9CDC7A19CCB79200770B80 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */; };
 		FB9CDC7C19CCCC6300770B80 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9CDC7B19CCCC6300770B80 /* delete.png */; };
-		FB9D6B3319CBC172007069A8 /* userArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9D6B3219CBC172007069A8 /* userArrow.png */; };
 		FB9F834019D1406000C3641F /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9F833F19D1406000C3641F /* SVPulsingAnnotationView.m */; };
 		FB9F9BD419CC0B2F008FF2DB /* sms.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD319CC0B2F008FF2DB /* sms.png */; };
 		FB9F9BD619CC0B38008FF2DB /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9F9BD519CC0B38008FF2DB /* camera.png */; };
@@ -69,15 +66,12 @@
 		5AD6DABA19C77A06006E4BC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5AD6DABC19C77A06006E4BC7 /* TagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagTests.m; sourceTree = "<group>"; };
 		FB12F51A19D10E57006D5B5B /* gps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps.png; sourceTree = "<group>"; };
-		FB12F51C19D10FA4006D5B5B /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		FB34181819CD6E9400BA9C95 /* mapType.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapType.png; sourceTree = "<group>"; };
 		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
-		FB463F3019CB6204009898B9 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		FB9CDC7819CCB79200770B80 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FB9CDC7B19CCCC6300770B80 /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
-		FB9D6B3219CBC172007069A8 /* userArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userArrow.png; sourceTree = "<group>"; };
 		FB9F833E19D1406000C3641F /* SVPulsingAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPulsingAnnotationView.h; sourceTree = "<group>"; };
 		FB9F833F19D1406000C3641F /* SVPulsingAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPulsingAnnotationView.m; sourceTree = "<group>"; };
 		FB9F9BD319CC0B2F008FF2DB /* sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sms.png; sourceTree = "<group>"; };
@@ -207,15 +201,12 @@
 		FB34181A19CD6E9B00BA9C95 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				FB12F51C19D10FA4006D5B5B /* pin.png */,
 				FB12F51A19D10E57006D5B5B /* gps.png */,
 				FB34181819CD6E9400BA9C95 /* mapType.png */,
 				FB9CDC7B19CCCC6300770B80 /* delete.png */,
 				FB9F9BD719CC14EE008FF2DB /* bullseye.png */,
 				FB9F9BD519CC0B38008FF2DB /* camera.png */,
 				FB9F9BD319CC0B2F008FF2DB /* sms.png */,
-				FB9D6B3219CBC172007069A8 /* userArrow.png */,
-				FB463F3019CB6204009898B9 /* tag.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -307,7 +298,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB9D6B3319CBC172007069A8 /* userArrow.png in Resources */,
 				5AD6DAAA19C77A06006E4BC7 /* Images.xcassets in Resources */,
 				FB34181919CD6E9400BA9C95 /* mapType.png in Resources */,
 				5AD6DA9C19C77A06006E4BC7 /* InfoPlist.strings in Resources */,
@@ -316,9 +306,7 @@
 				FB9CDC7C19CCCC6300770B80 /* delete.png in Resources */,
 				5AD6DAA519C77A06006E4BC7 /* Main.storyboard in Resources */,
 				FB9F9BD419CC0B2F008FF2DB /* sms.png in Resources */,
-				FB12F51D19D10FA4006D5B5B /* pin.png in Resources */,
 				FB9F9BD819CC14EE008FF2DB /* bullseye.png in Resources */,
-				FB463F3119CB6204009898B9 /* tag.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -149,7 +149,7 @@
 
 - (void)showPan
 {
-    NSLog(@"pan!");
+//    NSLog(@"pan!");
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

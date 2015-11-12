@@ -22,6 +22,30 @@
 		5AD6DAB319C77A06006E4BC7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9519C77A06006E4BC7 /* UIKit.framework */; };
 		5AD6DABB19C77A06006E4BC7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAB919C77A06006E4BC7 /* InfoPlist.strings */; };
 		5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DABC19C77A06006E4BC7 /* TagTests.m */; };
+		FB35AB331A704D9D00508260 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1104F619C9DAF4005317B9 /* CameraViewController.m */; };
+		FB35AB341A704D9D00508260 /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9F833F19D1406000C3641F /* SVPulsingAnnotationView.m */; };
+		FB35AB351A704D9D00508260 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DAA119C77A06006E4BC7 /* AppDelegate.m */; };
+		FB35AB361A704D9D00508260 /* TagDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A098DBF19C8C2DD00841805 /* TagDetailViewController.m */; };
+		FB35AB371A704D9D00508260 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AD6DA9D19C77A06006E4BC7 /* main.m */; };
+		FB35AB381A704D9D00508260 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
+		FB35AB391A704D9D00508260 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */; };
+		FB35AB3B1A704D9D00508260 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9319C77A06006E4BC7 /* CoreGraphics.framework */; };
+		FB35AB3C1A704D9D00508260 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9519C77A06006E4BC7 /* UIKit.framework */; };
+		FB35AB3D1A704D9D00508260 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD6DA9119C77A06006E4BC7 /* Foundation.framework */; };
+		FB35AB3F1A704D9D00508260 /* sms.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC33B201A664281005BBD71 /* sms.png */; };
+		FB35AB401A704D9D00508260 /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC33B1D1A664281005BBD71 /* delete.png */; };
+		FB35AB411A704D9D00508260 /* bullseye.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC33B1B1A664281005BBD71 /* bullseye.png */; };
+		FB35AB421A704D9D00508260 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAA919C77A06006E4BC7 /* Images.xcassets */; };
+		FB35AB431A704D9D00508260 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DA9A19C77A06006E4BC7 /* InfoPlist.strings */; };
+		FB35AB441A704D9D00508260 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD6DAA319C77A06006E4BC7 /* Main.storyboard */; };
+		FB35AB451A704D9D00508260 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC33B1C1A664281005BBD71 /* camera.png */; };
+		FB35AB461A704D9D00508260 /* mapType.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC33B1F1A664281005BBD71 /* mapType.png */; };
+		FB35AB471A704D9D00508260 /* gps.png in Resources */ = {isa = PBXBuildFile; fileRef = FBC33B1E1A664281005BBD71 /* gps.png */; };
+		FB35B2D41A704E6B00508260 /* libMonkeyTalk-2.0.10.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB35B2D31A704E6B00508260 /* libMonkeyTalk-2.0.10.a */; };
+		FB35B2D61A704E7B00508260 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB35B2D51A704E7B00508260 /* libstdc++.6.0.9.dylib */; };
+		FB35B2D81A704E8200508260 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FB35B2D71A704E8200508260 /* libsqlite3.dylib */; };
+		FB35B2DA1A704E8A00508260 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB35B2D91A704E8A00508260 /* CFNetwork.framework */; };
+		FB35B2DC1A704E9000508260 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB35B2DB1A704E9000508260 /* QuartzCore.framework */; };
 		FB463F2F19CB59AB009898B9 /* TagAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = FB463F2E19CB59AB009898B9 /* TagAnnotation.m */; };
 		FB9CDC7A19CCB79200770B80 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9CDC7919CCB79200770B80 /* MBProgressHUD.m */; };
 		FB9F834019D1406000C3641F /* SVPulsingAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9F833F19D1406000C3641F /* SVPulsingAnnotationView.m */; };
@@ -65,6 +89,14 @@
 		5AD6DAB819C77A06006E4BC7 /* TagTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TagTests-Info.plist"; sourceTree = "<group>"; };
 		5AD6DABA19C77A06006E4BC7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5AD6DABC19C77A06006E4BC7 /* TagTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagTests.m; sourceTree = "<group>"; };
+		FB35AB261A7049AA00508260 /* Tag copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tag copy-Info.plist"; path = "/Users/titanium/Desktop/Tag/Tag copy-Info.plist"; sourceTree = "<absolute>"; };
+		FB35AB4B1A704D9D00508260 /* Tag copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tag copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB35AB4C1A704D9D00508260 /* Tag copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Tag copy2-Info.plist"; path = "/Users/titanium/Desktop/Tag/Tag copy2-Info.plist"; sourceTree = "<absolute>"; };
+		FB35B2D31A704E6B00508260 /* libMonkeyTalk-2.0.10.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMonkeyTalk-2.0.10.a"; sourceTree = "<group>"; };
+		FB35B2D51A704E7B00508260 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		FB35B2D71A704E8200508260 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FB35B2D91A704E8A00508260 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		FB35B2DB1A704E9000508260 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FB463F2D19CB59AB009898B9 /* TagAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		FB463F2E19CB59AB009898B9 /* TagAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagAnnotation.m; sourceTree = "<group>"; };
 		FB9CDC7819CCB79200770B80 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -100,6 +132,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB35AB3A1A704D9D00508260 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB35B2DC1A704E9000508260 /* QuartzCore.framework in Frameworks */,
+				FB35B2DA1A704E8A00508260 /* CFNetwork.framework in Frameworks */,
+				FB35B2D81A704E8200508260 /* libsqlite3.dylib in Frameworks */,
+				FB35B2D61A704E7B00508260 /* libstdc++.6.0.9.dylib in Frameworks */,
+				FB35AB3B1A704D9D00508260 /* CoreGraphics.framework in Frameworks */,
+				FB35AB3C1A704D9D00508260 /* UIKit.framework in Frameworks */,
+				FB35AB3D1A704D9D00508260 /* Foundation.framework in Frameworks */,
+				FB35B2D41A704E6B00508260 /* libMonkeyTalk-2.0.10.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -110,6 +157,8 @@
 				5AD6DAB619C77A06006E4BC7 /* TagTests */,
 				5AD6DA9019C77A06006E4BC7 /* Frameworks */,
 				5AD6DA8F19C77A06006E4BC7 /* Products */,
+				FB35AB261A7049AA00508260 /* Tag copy-Info.plist */,
+				FB35AB4C1A704D9D00508260 /* Tag copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +167,7 @@
 			children = (
 				5AD6DA8E19C77A06006E4BC7 /* Tag.app */,
 				5AD6DAAF19C77A06006E4BC7 /* TagTests.xctest */,
+				FB35AB4B1A704D9D00508260 /* Tag copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +175,11 @@
 		5AD6DA9019C77A06006E4BC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB35B2DB1A704E9000508260 /* QuartzCore.framework */,
+				FB35B2D91A704E8A00508260 /* CFNetwork.framework */,
+				FB35B2D71A704E8200508260 /* libsqlite3.dylib */,
+				FB35B2D51A704E7B00508260 /* libstdc++.6.0.9.dylib */,
+				FB35B2D31A704E6B00508260 /* libMonkeyTalk-2.0.10.a */,
 				5AD6DA9119C77A06006E4BC7 /* Foundation.framework */,
 				5AD6DA9319C77A06006E4BC7 /* CoreGraphics.framework */,
 				5AD6DA9519C77A06006E4BC7 /* UIKit.framework */,
@@ -260,6 +315,23 @@
 			productReference = 5AD6DAAF19C77A06006E4BC7 /* TagTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FB35AB311A704D9D00508260 /* TagMonkeyTalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB35AB481A704D9D00508260 /* Build configuration list for PBXNativeTarget "TagMonkeyTalk" */;
+			buildPhases = (
+				FB35AB321A704D9D00508260 /* Sources */,
+				FB35AB3A1A704D9D00508260 /* Frameworks */,
+				FB35AB3E1A704D9D00508260 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TagMonkeyTalk;
+			productName = Tag;
+			productReference = FB35AB4B1A704D9D00508260 /* Tag copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -269,8 +341,14 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Pitzak, Clint J";
 				TargetAttributes = {
+					5AD6DA8D19C77A06006E4BC7 = {
+						DevelopmentTeam = ERX342W2NN;
+					};
 					5AD6DAAE19C77A06006E4BC7 = {
 						TestTargetID = 5AD6DA8D19C77A06006E4BC7;
+					};
+					FB35AB311A704D9D00508260 = {
+						DevelopmentTeam = ERX342W2NN;
 					};
 				};
 			};
@@ -289,6 +367,7 @@
 			targets = (
 				5AD6DA8D19C77A06006E4BC7 /* Tag */,
 				5AD6DAAE19C77A06006E4BC7 /* TagTests */,
+				FB35AB311A704D9D00508260 /* TagMonkeyTalk */,
 			);
 		};
 /* End PBXProject section */
@@ -318,6 +397,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB35AB3E1A704D9D00508260 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB35AB3F1A704D9D00508260 /* sms.png in Resources */,
+				FB35AB401A704D9D00508260 /* delete.png in Resources */,
+				FB35AB411A704D9D00508260 /* bullseye.png in Resources */,
+				FB35AB421A704D9D00508260 /* Images.xcassets in Resources */,
+				FB35AB431A704D9D00508260 /* InfoPlist.strings in Resources */,
+				FB35AB441A704D9D00508260 /* Main.storyboard in Resources */,
+				FB35AB451A704D9D00508260 /* camera.png in Resources */,
+				FB35AB461A704D9D00508260 /* mapType.png in Resources */,
+				FB35AB471A704D9D00508260 /* gps.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -340,6 +435,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AD6DABD19C77A06006E4BC7 /* TagTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB35AB321A704D9D00508260 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB35AB331A704D9D00508260 /* CameraViewController.m in Sources */,
+				FB35AB341A704D9D00508260 /* SVPulsingAnnotationView.m in Sources */,
+				FB35AB351A704D9D00508260 /* AppDelegate.m in Sources */,
+				FB35AB361A704D9D00508260 /* TagDetailViewController.m in Sources */,
+				FB35AB371A704D9D00508260 /* main.m in Sources */,
+				FB35AB381A704D9D00508260 /* TagAnnotation.m in Sources */,
+				FB35AB391A704D9D00508260 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,12 +568,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tag/Tag-Prefix.pch";
 				INFOPLIST_FILE = "Tag/Tag-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/monkeytalkpro/agents/ios/extralibs",
+					"$(PROJECT_DIR)/monkeytalkpro/agents/ios",
+					"$(PROJECT_DIR)/monkeytalkpro/browser/ios/MTBrowser",
+					"$(PROJECT_DIR)/monkeytalkpro/samples/ios/Demo1",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -474,13 +592,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Clint Pitzak (W5EC3C89H7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clint Pitzak (W5EC3C89H7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tag/Tag-Prefix.pch";
 				INFOPLIST_FILE = "Tag/Tag-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/monkeytalkpro/agents/ios/extralibs",
+					"$(PROJECT_DIR)/monkeytalkpro/agents/ios",
+					"$(PROJECT_DIR)/monkeytalkpro/browser/ios/MTBrowser",
+					"$(PROJECT_DIR)/monkeytalkpro/samples/ios/Demo1",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -525,6 +651,47 @@
 			};
 			name = Release;
 		};
+		FB35AB491A704D9D00508260 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tag/Tag-Prefix.pch";
+				INFOPLIST_FILE = "Tag copy2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "Tag copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FB35AB4A1A704D9D00508260 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Clint Pitzak (W5EC3C89H7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Clint Pitzak (W5EC3C89H7)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tag/Tag-Prefix.pch";
+				INFOPLIST_FILE = "Tag copy2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "Tag copy";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -551,6 +718,15 @@
 			buildConfigurations = (
 				5AD6DAC419C77A06006E4BC7 /* Debug */,
 				5AD6DAC519C77A06006E4BC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB35AB481A704D9D00508260 /* Build configuration list for PBXNativeTarget "TagMonkeyTalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB35AB491A704D9D00508260 /* Debug */,
+				FB35AB4A1A704D9D00508260 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
